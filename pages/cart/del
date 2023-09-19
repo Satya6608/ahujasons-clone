@@ -1,0 +1,58 @@
+<template>
+  <div class="container-fluid cart-container">
+    {{ items }}
+    <div class="row">
+      <div class="col-12">
+        <h1 class="text-center font-medium cart-title">Shopping Cart</h1>
+      </div>
+    </div>
+    <div class="row">
+      <ul>
+        <li v-for="item in items" :key="item.id">
+          {{ item.name }} - {{ item.price }}
+          <button @click="removeFromCart(item)">Remove</button>
+        </li>
+      </ul>
+    </div>
+    <div class="row">
+      <div class="col-12 text-center">
+        <p>
+          You have no items in your shopping cart.<br />
+          <a href="/" class=""><span>Click here</span></a>
+          to continue shopping.
+        </p>
+      </div>
+    </div>
+  </div>
+</template>
+<script>
+import { mapState, mapActions } from "vuex";
+
+export default {
+  computed: mapState({
+    items: (state) => state.cart.items,
+  }),
+  methods: mapActions({
+    removeFromCart: "cart/removeFromCart",
+  }),
+};
+</script>
+<style>
+.cart-container {
+  padding: 0.7rem 2rem;
+  min-height: 90vh;
+  margin-bottom: 50px;
+}
+.col-12 {
+  flex: 0 0 100%;
+  max-width: 100%;
+}
+.cart-container .cart-title {
+  font-size: 30px;
+  margin: 25px 0;
+  font-weight: 400;
+}
+.text-center {
+  text-align: center !important;
+}
+</style>
