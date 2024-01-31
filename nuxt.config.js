@@ -1,6 +1,5 @@
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
-  buildDir: 'dist',
   head: {
     title: 'first_nuxt',
     store: './store/store.js',
